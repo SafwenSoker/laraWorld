@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->double('msrp', 12, 3);
             $table->enum('size', ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL']);
             $table->string('color');
+            $table->string('picture');
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->restrictOnDelete()->restrictOnUpdate();
