@@ -13,4 +13,11 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
+    .styles(['resources/css/dashboard.css',
+    'resources/css/adminExtra.css'], 'public/css/admin.css')
+    .scripts(['resources/js/dashboard.js',
+    'node_modules/feather-icons/dist/feather.js',
+    'node_modules/chart.js/dist/chart.js',
+], 'public/js/admin.js')
+    .scripts('node_modules/chart.js/dist/chart.js','public/js/chartjs.js')
     .sourceMaps();
