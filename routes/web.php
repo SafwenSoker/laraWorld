@@ -14,7 +14,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'welcome']);
+Route::get('/welcome', [HomeController::class, 'welcome']);
 
 Auth::routes();
 
