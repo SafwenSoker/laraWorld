@@ -12,12 +12,13 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .styles(['resources/css/dashboard.css',
-    'resources/css/adminExtra.css'], 'public/css/admin.css')
-    .scripts(['resources/js/dashboard.js',
-    'node_modules/feather-icons/dist/feather.js',
-    'node_modules/chart.js/dist/chart.js',
-], 'public/js/admin.js')
+    .sass('resources/sass/app.scss', 'public/css/app.css')
+    .styles('resources/css/dashboard.css',
+     'public/css/admin-dashboard.css')
+    .scripts('resources/js/scripts.js', 'public/js/scripts.js')
+    .scripts('resources/js/datatables-simple-demo.js', 'public/js/datatables-simple-demo.js')
     .scripts('node_modules/chart.js/dist/chart.js','public/js/chartjs.js')
+    .scripts('resources/js/feather.js', 'public/js/feather.js')
+    .scripts('resources/js/bootstrap.js', 'public/js/bootstrap.js')
+    .copy('node_modules/@fortawesome/fontawesome-free/webfonts','public/webfonts')
     .sourceMaps();

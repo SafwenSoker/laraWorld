@@ -19,13 +19,15 @@ Route::get('/welcome', [HomeController::class, 'welcome']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin', function(){
-    return view('admin.dashboard');
-});
+Route::get('/admin-dashboard', function(){
+    return view('admin.index');
+})->middleware('auth');
+
+Route::resource('customers', App\Http\Controllers\Admin\CustomerController::class);
 
 Route::get('stock/add', [StockController::class, 'create']);
 Route::post('stock/add', [StockController::class, 'store']);
 Route::get('stocks',[StockController::class, 'index']);
-Route::get('stock/chart',[StockController::class, 'chart']);
+Route::get('stock/chart',[StockController::class, 'chart']);   
