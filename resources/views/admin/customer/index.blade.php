@@ -4,6 +4,7 @@
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
             Customers List
+            <a href="{{ route('customers.create') }}" class="btn btn-outline-primary float-right"><i class="fas fa-user-plus"></i> Add Customer</a>
         </div>
         <div class="card-body">
             <table id="datatablesSimple">
