@@ -87,13 +87,7 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        $validatedData = $request->validate([
-            'firstname' => 'required|min:2',
-            'lastname' => 'required|min:2',
-            'phone' => 'required',
-            'email' => 'required|email',
-            'address' => 'required'
-        ]);
+        $validatedData = $request->validate($this->validationRules());
 
         $customer->update($validatedData);
         return redirect()->route('customers.show', ['customer' => $customer]);
@@ -107,6 +101,22 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        return [
+            'firstname' => 'required|min:2',
+            'lastname' => 'required|min:2',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'address' => 'required'
+        ];
+    }
+
+    private function validationRules(){
+        return [
+            'firstname' => 'required|min:2',
+            'lastname' => 'required|min:2',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'address' => 'required'
+        ];
     }
 }
