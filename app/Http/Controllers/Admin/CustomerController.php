@@ -36,7 +36,24 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'firstname' => 'required|min:2',
+            'lastname' => 'required|min:2',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'address' => 'required'
+        ]);
+
+        /*
+        $customer = new Customer();
+        $customer->firstname = $request->firstname;
+        $customer->lastname = $request->lastname;
+        $customer->phone = $request->phone;
+        $customer->email = $request->email;
+        $customer->address = $request->address;
+        */
+        $customer = Customer::create($validatedData);
+        return redirect()->route('customers.show', ['customer' => $customer]);
     }
 
     /**
@@ -44,7 +61,7 @@ class CustomerController extends Controller
      *
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function show(Customer $customer)
     {
         return view('admin.customer.show', ['customer' => Customer::find($customer->id)]);
