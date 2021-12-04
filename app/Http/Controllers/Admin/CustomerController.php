@@ -53,7 +53,7 @@ class CustomerController extends Controller
         $customer->address = $request->address;
         */
         $customer = Customer::create($validatedData);
-        return redirect()->route('customers.show', ['customer' => $customer]);
+        return redirect()->route('customers.show', ['customer' => $customer])->with('storeCustomer', 'Customer have been stored successfully');
     }
 
     /**
@@ -102,7 +102,7 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         $customer->delete();
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('deleteCustomer', 'Customer deleted succesfully');
     }
 
     private function validationRules(){

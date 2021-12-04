@@ -1,5 +1,13 @@
 @extends('admin.index')
 @section('main')
+@if (session('deleteCustomer'))
+    <div class="alert alert-dismissible alert-success fade show">
+        {{session('deleteCustomer')}}
+        <button class="close" type="button" data-dismiss="alert" aria-lbel="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
