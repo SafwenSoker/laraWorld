@@ -75,7 +75,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        return view('admin.customer.edit', ['customer' => $customer]);
     }
 
     /**
@@ -87,7 +87,16 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        $validatedData = $request->validate([
+            'firstname' => 'required|min:2',
+            'lastname' => 'required|min:2',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'address' => 'required'
+        ]);
+
+        $customer->update($validatedData);
+        return redirect()->route('customers.show', ['customer' => $customer]);
     }
 
     /**

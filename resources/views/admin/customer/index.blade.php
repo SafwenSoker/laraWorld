@@ -26,22 +26,8 @@
                         <td>{{$customer->email}}</td>
                         <td>
                             <a href="{{ route('customers.show', ['customer' => $customer->id]);}}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                            <form action="{{ url('customers/'.$customer->id) }}" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('PUT') }}
-                    
-                                <button type="submit" class="btn btn-secondary">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                            </form>
-                            <form action="{{ url('customers/'.$customer->id) }}" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                    
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
+                            <a href="{{ route('customers.edit', ['customer' => $customer->id])}}" title="Edit user {{ $customer->firstname. ' '.$customer->lastname }}">    <i class="fas fa-edit"></i></a>
+                            
                         </td>
                     </tr>
                     @endforeach
