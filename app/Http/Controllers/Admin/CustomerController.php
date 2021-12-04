@@ -101,13 +101,8 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        return [
-            'firstname' => 'required|min:2',
-            'lastname' => 'required|min:2',
-            'phone' => 'required',
-            'email' => 'required|email',
-            'address' => 'required'
-        ];
+        $customer->delete();
+        return redirect()->route('customers.index');
     }
 
     private function validationRules(){

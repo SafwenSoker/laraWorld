@@ -27,7 +27,10 @@
                         <td>
                             <a href="{{ route('customers.show', ['customer' => $customer->id]);}}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                             <a href="{{ route('customers.edit', ['customer' => $customer->id])}}" title="Edit user {{ $customer->firstname. ' '.$customer->lastname }}">    <i class="fas fa-edit"></i></a>
-                            
+                            <a href="#" 
+                            onClick="event.preventDefault();
+                            document.querySelector('#delete-customer-form').submit()" class="btn btn-danger"> <i class="fas fa-user-slash"></i></a>
+                            <form action="{{route('customers.destroy', ['customer' => $customer->id])}}" method="post"  id="delete-customer-form">@csrf @method('DELETE') </form>
                         </td>
                     </tr>
                     @endforeach

@@ -21,7 +21,7 @@ class CreateOrderDetailsTable extends Migration
             $table->integer('quantity');
             $table->timestamps();
             $table->foreign('product_id')->references('id')->on('products')->restrictOnDelete()->restrictOnUpdate();
-            $table->foreign('order_id')->references('id')->on('orders')->restrictOnDelete()->restrictOnUpdate();
+            $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
